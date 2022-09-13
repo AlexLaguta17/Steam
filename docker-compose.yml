@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  web:
+    build: steam
+    env_file:
+      - steam/.env
+    volumes:
+      - ./steam:/usr/src/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  db:
+    image: postgres
+    volumes:
+      - ./steam/postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - steam/.env
