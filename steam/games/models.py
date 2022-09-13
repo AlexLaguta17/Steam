@@ -37,7 +37,7 @@ class Library(models.Model):
         MinValueValidator(limit_value=0),
         MaxValueValidator(limit_value=100000)
     ])
-    last_launch = models.DateTimeField()
+    last_launch = models.DateTimeField() # bpvtytybtkdg
 
 
 class Item(models.Model):
