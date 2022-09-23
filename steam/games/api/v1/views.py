@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from rest_framework.permissions import IsAuthenticated
 
 from games.models import Application, Library, Item, GameComment
 from .serializers import ApplicationSerializer, LibrarySerializer, ItemSerializer, GameCommentSerializer
@@ -7,6 +8,7 @@ from rest_framework import viewsets
 
 class ApplicationAPIView(viewsets.ModelViewSet):
     serializer_class = ApplicationSerializer
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         return Application.objects.all()
