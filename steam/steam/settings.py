@@ -14,7 +14,7 @@ from datetime import timedelta
 # from user.models import User
 from pathlib import Path
 
-
+import user
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
@@ -141,7 +141,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# AUTH_USER_MODEL = User
+AUTH_USER_MODEL = 'user.User'
 
 
 # Internationalization
