@@ -50,7 +50,7 @@ THIRD_PARTY_APPS = [
     # "django_countries",
     # "drf_yasg",
     'rest_framework_simplejwt',
-    # 'debug_toolbar',
+    'debug_toolbar',
     # 'django_filters',
 ]
 
@@ -63,6 +63,7 @@ LOCAL_APPS = [
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -198,3 +199,7 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
