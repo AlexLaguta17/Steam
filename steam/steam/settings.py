@@ -48,7 +48,7 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     "rest_framework",
     # "django_countries",
-    # "drf_yasg",
+    'drf_yasg',
     'rest_framework_simplejwt',
     'debug_toolbar',
     # 'django_filters',
@@ -203,3 +203,5 @@ SIMPLE_JWT = {
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+USE_SWAGGER = True

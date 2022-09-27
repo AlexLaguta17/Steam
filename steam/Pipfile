@@ -9,6 +9,7 @@ psycopg2-binary = "==2.9.3"
 djangorestframework = "*"
 djangorestframework-simplejwt = "*"
 django-debug-toolbar = "*"
+drf-yasg = "*"
 
 [dev-packages]
 
