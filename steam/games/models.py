@@ -2,12 +2,13 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 from django.db import models
 
-from games.services.enums.choices import ItemTypeChoices, ItemQualityChoices
+from games.services.enums.choices import ItemTypeChoices, ItemQualityChoices, GameCategoryChoices
 from user.models import User
 
 
 class Application(models.Model):
     name = models.CharField(max_length=255)
+    category = models.CharField(max_length=30, choices=GameCategoryChoices.choices)
     size = models.FloatField(default=0, validators=[
         MinValueValidator(limit_value=1),
         MaxValueValidator(limit_value=200000)
@@ -22,7 +23,7 @@ class Application(models.Model):
     ])
     publisher = models.ForeignKey(User, on_delete=models.DO_NOTHING,
                                   related_name='Application', related_query_name='Applications')
-    price = models.FloatField(default=0, validators=[
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0, validators=[
         MinValueValidator(limit_value=0),
         MaxValueValidator(limit_value=10000)
     ])

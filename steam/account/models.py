@@ -9,6 +9,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,
                                 related_name='Profile', related_query_name='Profiles')
     nickname = models.CharField(max_length=40)
+    description = models.CharField(max_length=800)
     name = models.CharField(max_length=20)
     surname = models.CharField(max_length=20)
     age = models.PositiveSmallIntegerField(default=0, validators=[
@@ -25,7 +26,7 @@ class Profile(models.Model):
 class UserItem(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE,
                              related_name='UserItem', related_query_name='UserItems')
-    price = models.FloatField(default=1, validators=[
+    price = models.DecimalField(max_digits=10, decimal_places=2, validators=[
         MinValueValidator(limit_value=0.03),
         MaxValueValidator(limit_value=3000)
     ])
@@ -51,7 +52,7 @@ class Friend(models.Model):
 class Balance(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,
                                 related_name='Balance', related_query_name='Balance')
-    balance = models.PositiveSmallIntegerField(default=0, validators=[
+    balance = models.DecimalField(max_digits=10, decimal_places=2, validators=[
         MinValueValidator(limit_value=0),
         MaxValueValidator(limit_value=100000)
     ])
@@ -79,7 +80,7 @@ class BuyRequest(models.Model):
                              related_name='BuyRequest', related_query_name='BuyRequests')
     user = models.ForeignKey(User, on_delete=models.CASCADE,
                              related_name='BuyRequest', related_query_name='BuyRequests')
-    wish_price = models.FloatField(default=0, validators=[
+    wish_price = models.DecimalField(max_digits=10, decimal_places=2, validators=[
         MinValueValidator(limit_value=0),
         MaxValueValidator(limit_value=3000)
     ])

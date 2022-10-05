@@ -24,8 +24,12 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView, TokenVerifyView,
 )
 
+import djoser
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('auth/', include('djoser.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('api/v1/', include('user.api.v1.urls')),
     path('api/v1/', include('games.api.v1.urls')),

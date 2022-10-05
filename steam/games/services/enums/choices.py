@@ -16,3 +16,17 @@ class ItemQualityChoices(models.TextChoices):
     FIELD_TESTED = 'FIELD_TESTED', 'Field-Tested'
     MINIMAL_WEAR = 'MINIMAL_WEAR', 'Minimal Wear'
     FACTORY_NEW = 'FACTORY_NEW', 'Factory new'
+
+
+class GameCategoryChoices(models.TextChoices):
+    ACTION = 'ACTION', 'Action'
+    SHOOTER = 'SHOOTER', 'Shooter'
+    ADVENTURES = 'ADVENTURES', 'Adventures'
+    PUZZLE = 'PUZZLE', 'Puzzle'
+    CASUAL = 'CASUAL', 'Casual'
+    ROLE_PLAYING = 'ROLE_PLAYING', 'Role-playing'
+    SIMULATOR = 'SIMULATOR', 'Simulator'
+    STRATEGY = 'STRATEGY', 'Strategy'
+    SPORTS = 'SPORTS', 'Sports'
+    RACE = 'RACE', 'Race'
+    CARD = 'CARD', 'Card'

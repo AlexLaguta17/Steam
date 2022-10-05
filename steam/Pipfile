@@ -10,6 +10,7 @@ djangorestframework = "*"
 djangorestframework-simplejwt = "*"
 django-debug-toolbar = "*"
 drf-yasg = "*"
+djoser = "*"
 
 [dev-packages]
 

@@ -52,6 +52,7 @@ THIRD_PARTY_APPS = [
     'rest_framework_simplejwt',
     'debug_toolbar',
     # 'django_filters',
+    'djoser'
 ]
 
 LOCAL_APPS = [
