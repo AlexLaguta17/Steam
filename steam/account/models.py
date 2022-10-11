@@ -8,12 +8,9 @@ from user.models import User
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,
                                 related_name='Profile', related_query_name='Profiles')
-    nickname = models.CharField(max_length=40)
     description = models.CharField(max_length=800)
-    name = models.CharField(max_length=20)
-    surname = models.CharField(max_length=20)
-    age = models.PositiveSmallIntegerField(default=0, validators=[
-        MinValueValidator(limit_value=0),
+    age = models.PositiveSmallIntegerField(default=10, validators=[
+        MinValueValidator(limit_value=10),
         MaxValueValidator(limit_value=90)
     ])
     location = models.CharField(max_length=30)
