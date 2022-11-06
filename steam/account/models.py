@@ -20,23 +20,18 @@ class Profile(models.Model):
     ])
 
 
-class UserItem(models.Model):
+class Inventory(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE,
-                             related_name='UserItem', related_query_name='UserItems')
+                             related_name='Inventory', related_query_name='Inventories')
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+                                related_name='Inventory', related_query_name='Inventories')
     price = models.DecimalField(max_digits=10, decimal_places=2, validators=[
         MinValueValidator(limit_value=0.03),
         MaxValueValidator(limit_value=3000)
     ])
     is_on_sale = models.BooleanField(default=False)
-
-
-class Inventory(models.Model):
-    user_item = models.ForeignKey(UserItem, on_delete=models.CASCADE,
-                             related_name='Inventory', related_query_name='Inventories')
-    user = models.OneToOneField(User, on_delete=models.CASCADE,
-                                related_name='Inventory', related_query_name='Inventories')
+    received_at = models.DateField(auto_now_add=True)
     is_tradable = models.BooleanField(default=True)
-    on_sale = models.BooleanField(default=False)
 
 
 class Friend(models.Model):

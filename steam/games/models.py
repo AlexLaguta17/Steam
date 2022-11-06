@@ -30,24 +30,20 @@ class Application(models.Model):
 
 
 class Library(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE,
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
                                 related_name='Library', related_query_name='Libraries')
     application = models.ForeignKey('Application', on_delete=models.CASCADE,
                                     related_name='Library', related_query_name='Libraries')
-    game_time = models.PositiveSmallIntegerField(default=0, validators=[
+    app_time = models.PositiveSmallIntegerField(default=0, validators=[
         MinValueValidator(limit_value=0),
         MaxValueValidator(limit_value=100000)
     ])
-    last_launch = models.DateTimeField()
+    last_launch = models.DateField()
 
 
 class Item(models.Model):
     application = models.ForeignKey(Application, on_delete=models.CASCADE,
                                     related_name='Item', related_query_name='Items')
-    # price = models.FloatField(default=0, validators=[
-    #     MinValueValidator(limit_value=0.03),
-    #     MaxValueValidator(limit_value=3000)
-    # ])
     name = models.CharField(max_length=255)
     type = models.CharField(max_length=30, choices=ItemTypeChoices.choices)
     quality = models.CharField(max_length=40, choices=ItemQualityChoices.choices)

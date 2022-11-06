@@ -16,6 +16,7 @@ class ItemQualityChoices(models.TextChoices):
     FIELD_TESTED = 'FIELD_TESTED', 'Field-Tested'
     MINIMAL_WEAR = 'MINIMAL_WEAR', 'Minimal Wear'
     FACTORY_NEW = 'FACTORY_NEW', 'Factory new'
+    NONE = 'NONE', 'None'
 
 
 class GameCategoryChoices(models.TextChoices):
