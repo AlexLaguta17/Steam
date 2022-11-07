@@ -28,15 +28,15 @@ def get_selling_items(input_data):
         items = items.filter(Inventories__price__lte=input_data.get('price_to'))
     output_data = []
     for item in items:
-        output_data.append({'item': item, 'amount': get_items_amount(item), 'min_price': get_item_price(item)})
+        output_data.append({'item': item, 'amount': _get_items_amount(item), 'min_price': _get_item_price(item)})
     return output_data
 
 
-def get_items_amount(item):
+def _get_items_amount(item):
     amount = Inventory.objects.filter(item_id=item.id).count()
     return amount
 
 
-def get_item_price(item):
+def _get_item_price(item):
     price = Inventory.objects.filter(item_id=item.id).aggregate(Min('price'))
     return price['price__min']
