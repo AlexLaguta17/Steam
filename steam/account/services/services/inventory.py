@@ -1,7 +1,6 @@
 from django.db.models import Min
 
 from account.models import Inventory
-from games.api.v1.serializers import ItemSerializer
 from games.models import Item
 
 
@@ -33,10 +32,10 @@ def get_selling_items(input_data):
 
 
 def _get_items_amount(item):
-    amount = Inventory.objects.filter(item_id=item.id).count()
+    amount = Inventory.objects.filter(is_on_sale=True, item__is_sellable=True, item_id=item.id).count()
     return amount
 
 
 def _get_item_price(item):
-    price = Inventory.objects.filter(item_id=item.id).aggregate(Min('price'))
+    price = Inventory.objects.filter(is_on_sale=True, item__is_sellable=True, item_id=item.id).aggregate(Min('price'))
     return price['price__min']
