@@ -119,9 +119,6 @@ class GetSellingItemsAPIView(generics.GenericAPIView):
     def put(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        serializer = SellingItemOutSerializer(get_selling_items(serializer.data), many=True)
-        if serializer.data:
-            return Response({'get': serializer.data}, status=status.HTTP_200_OK)
-        else:
-            return Response({'get': "Bad request"}, status=status.HTTP_400_BAD_REQUEST)
+        serializer = get_selling_items(serializer.data)
+        return Response({'put': serializer.data}, status=status.HTTP_200_OK)
 

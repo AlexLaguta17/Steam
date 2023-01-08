@@ -11,6 +11,11 @@ djangorestframework-simplejwt = "*"
 django-debug-toolbar = "*"
 drf-yasg = "*"
 djoser = "*"
+celery = "*"
+redis = "*"
+django-celery-results = "*"
+django-redis = "*"
+django-celery-beat = "*"
 
 [dev-packages]
 

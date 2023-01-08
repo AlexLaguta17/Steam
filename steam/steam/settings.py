@@ -52,7 +52,9 @@ THIRD_PARTY_APPS = [
     'rest_framework_simplejwt',
     'debug_toolbar',
     # 'django_filters',
-    'djoser'
+    'djoser',
+    'django_celery_results',
+    'django_celery_beat',
 ]
 
 LOCAL_APPS = [
@@ -206,3 +208,17 @@ INTERNAL_IPS = [
 ]
 
 USE_SWAGGER = True
+
+CELERY_BROKER_URL = 'redis://0.0.0.0:6379/0'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://0.0.0.0:6379/1',
+    }
+}
+
+CELERY_CACHE_BACKEND = 'default'
+
